@@ -1,0 +1,37 @@
+---
+import Hero from "../components/Hero.astro";
+import Header from "../components/Header.svelte";
+export interface Props {
+    lang: string;
+}
+const { lang } = Astro.props;
+const dir = lang === "he" ? "rtl" : "ltr";
+---
+
+<html lang={lang} dir={dir}>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>ReverseProof</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Miriam+Libre:wght@400;700&display=swap");
+            body,
+            html {
+                margin: 0px;
+                height: 100%;
+                width: 100%;
+                font-family: "Heebo", sans-serif;
+            }
+            Hero {
+                height: 100vh;
+                width: 100vh;
+            }
+        </style>
+    </head>
+    <body>
+        <Header dir={dir} client:only="svelte" />
+        <Hero />
+    </body>
+</html>
