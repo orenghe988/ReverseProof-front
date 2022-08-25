@@ -1,0 +1,22 @@
+.hero-container {
+    width: 100%;
+    height: 100vh;
+    /* background-color: black; */
+    display: grid;
+    grid-template-rows: 9fr 1fr;
+    background-color: black;
+}
+.hero-container * {
+    margin: 1px;
+    border-radius: 10px;
+}
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.hero-content > div {
+    border: 1px dashed yellowgreen;
+}
+.hero-scroll {
+    border: 1px dashed magenta;
+}
