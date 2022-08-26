@@ -1,11 +1,11 @@
 <script>
   import { isDark } from "../states/darkmode";
-  export let dir;
+  export let lang;
 </script>
 
 <div class="header-wrapper" style={$isDark ? "color: white" : ""}>
   <div class="header">
-    <div class={dir === "ltr" ? "logo-wrapper" : "logo-wrapper rtl-flex"}>
+    <div class={lang === "en" ? "logo-wrapper" : "logo-wrapper rtl-flex"}>
       <a href="/" class="logo-link">
         <img
           src={$isDark

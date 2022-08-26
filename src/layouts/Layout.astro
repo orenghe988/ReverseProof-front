@@ -5,10 +5,9 @@ export interface Props {
     lang: string;
 }
 const { lang } = Astro.props;
-const dir = lang === "he" ? "rtl" : "ltr";
 ---
 
-<html lang={lang} dir={dir}>
+<html lang={lang} dir={lang === "he" ? "rtl" : "ltr"}>
     <head>
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -31,7 +30,7 @@ const dir = lang === "he" ? "rtl" : "ltr";
         </style>
     </head>
     <body>
-        <Header dir={dir} client:only="svelte" />
+        <Header lang={lang} client:only="svelte" />
         <Hero />
     </body>
 </html>

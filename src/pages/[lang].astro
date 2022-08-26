@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+export async function getStaticPaths() {
+    return [
+        { params: { lang: "he" } },
+        { params: { lang: "hb" } },
+        { params: { lang: "en" } },
+        { params: { lang: "english" } },
+        { params: { lang: "hebrew" } },
+    ];
+}
+// @ts-ignore: Unreachable code error
+const lang = Astro.params.lang.includes("en") ? "en" : "he";
+---
+
+<Layout lang={lang} />
