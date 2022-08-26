@@ -967,6 +967,11 @@ cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
+csstype@^2.6.8:
+  version "2.6.20"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.20.tgz#9229c65ea0b260cf4d3d997cb06288e36a8d6dda"
+  integrity sha512-/WwNkdXfckNgw6S5R125rrW8ez139lBHWouiBvX8dfMFtcn6V81REDqnH7+CRpRipfYlyU1CmOnOxrmGcFOjeA==
+
 csstype@^3.0.2:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.0.tgz#4ddcac3718d787cf9df0d1b7d15033925c8f29f2"
@@ -3120,6 +3125,14 @@ svelte-preprocess@^4.10.7:
     sorcery "^0.10.0"
     strip-indent "^3.0.0"
 
+svelte-types@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/svelte-types/-/svelte-types-0.0.7.tgz#77d5e414d6cacbcb3c9339eb9678981715038f13"
+  integrity sha512-v8eOfn1L8h04QizgNMeZppiXyeoYZT+P8TvvK92+CiayCokvRInSg2RJLBPeVcSM4z3A/djPjTQTN0KZX08Lvg==
+  dependencies:
+    csstype "^2.6.8"
+    svelte "^3.18.2"
+
 svelte2tsx@^0.5.11:
   version "0.5.14"
   resolved "https://registry.yarnpkg.com/svelte2tsx/-/svelte2tsx-0.5.14.tgz#f22cb8dd349266b4125876fbce0fa4a314b678a8"
@@ -3128,7 +3141,7 @@ svelte2tsx@^0.5.11:
     dedent-js "^1.0.1"
     pascal-case "^3.1.1"
 
-svelte@^3.46.4:
+svelte@^3.18.2, svelte@^3.46.4:
   version "3.49.0"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.49.0.tgz#5baee3c672306de1070c3b7888fc2204e36a4029"
   integrity sha512-+lmjic1pApJWDfPCpUUTc1m8azDqYCG1JN9YEngrx/hUyIcFJo6VZhj0A1Ai0wqoHcEIuQy+e9tk+4uDgdtsFA==

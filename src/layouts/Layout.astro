@@ -1,6 +1,8 @@
 ---
-import Hero from "../components/Hero.astro";
 import Header from "../components/Header.svelte";
+import Hero from "../components/Hero.svelte";
+import ScrollDown from "../components/ScrollDown.astro";
+import "../styles/Layout.css";
 export interface Props {
     lang: string;
 }
@@ -14,23 +16,15 @@ const { lang } = Astro.props;
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>ReverseProof</title>
-        <style>
-            @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Miriam+Libre:wght@400;700&display=swap");
-            body,
-            html {
-                margin: 0px;
-                height: 100%;
-                width: 100%;
-                font-family: "Heebo", sans-serif;
-            }
-            Hero {
-                height: 100vh;
-                width: 100vh;
-            }
-        </style>
     </head>
     <body>
         <Header lang={lang} client:only="svelte" />
-        <Hero />
+        <section class="hero">
+            {/* @ts-expect-error */}
+            <Hero lang={lang} client:load />
+            <div class="scrollDown-container">
+                <ScrollDown />
+            </div>
+        </section>
     </body>
 </html>

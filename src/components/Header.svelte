@@ -24,10 +24,10 @@
 
 <style>
   .header-wrapper {
-    position: absolute;
-    top: 20px;
+    position: fixed;
     width: 80vw;
     height: 50px;
+    top: 20px;
     z-index: 100;
     left: 0;
     right: 0;
@@ -68,5 +68,6 @@
   }
   .header-logo {
     height: 40px;
+    border-radius: 7px;
   }
 </style>
