@@ -1,18 +1,35 @@
 <script>
+  export let lang;
   import { hero } from "../text.json";
 
-  $: heroTitle = hero.title[lang];
-  $: x = 0;
-  const dotsInterval = setInterval(() => {
-    if (++x === 3) clearInterval(dotsInterval);
-    heroTitle += ".";
-  }, 750);
-
-  export let lang;
+  $: titlePhraseLetters = hero.title[lang].split("");
+  let titleTypedChar = "";
+  let index = 0;
+  setTimeout(() => {
+    const titleInterval = setInterval(() => {
+      if (index >= titlePhraseLetters.length) {
+        clearInterval(titleInterval);
+        index = 0;
+        const titleDotsInterval = setInterval(() => {
+          if (index >= 3) {
+            clearInterval(titleDotsInterval);
+          } else {
+            titleTypedChar += ".";
+            index++;
+          }
+        }, 750);
+      } else {
+        titleTypedChar += titlePhraseLetters[index];
+        index++;
+      }
+    }, 150);
+  }, 1000);
 </script>
 
 <div class="hero-content">
-  <div class="hero-title">{heroTitle}</div>
+  <div class="hero-title">
+    <h2>{`{ ${titleTypedChar} }`}</h2>
+  </div>
   <div class="hero-image-container">
     <!-- svelte-ignore a11y-img-redundant-alt -->
     <img
@@ -37,7 +54,7 @@
     text-align: center;
     margin: auto;
     bottom: 10vh;
-    font-size: 50px;
+    font-size: 30px;
   }
   .hero-image-container {
     display: flex;

@@ -22,7 +22,7 @@
   </div>
 </div>
 
-<style>
+<style lang="scss">
   .header-wrapper {
     position: fixed;
     width: 80vw;
@@ -69,5 +69,14 @@
   .header-logo {
     height: 40px;
     border-radius: 7px;
+    &:hover + .logo-text {
+      color: grey;
+    }
+  }
+  .logo-text {
+    transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    &:hover {
+      color: lightgrey;
+    }
   }
 </style>

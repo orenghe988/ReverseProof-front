@@ -12,7 +12,7 @@ const { lang } = Astro.props;
 <html lang={lang} dir={lang === "he" ? "rtl" : "ltr"}>
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>ReverseProof</title>
@@ -20,11 +20,11 @@ const { lang } = Astro.props;
     <body>
         <Header lang={lang} client:only="svelte" />
         <section class="hero">
-            {/* @ts-expect-error */}
             <Hero lang={lang} client:load />
             <div class="scrollDown-container">
                 <ScrollDown />
             </div>
+            <div style="height: 100vh;" id="x">x</div>
         </section>
     </body>
 </html>
