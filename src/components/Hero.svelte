@@ -1,10 +1,13 @@
 <script>
   export let lang;
+  import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
   import { hero } from "../text.json";
-
+  let ready = false;
   $: titlePhraseLetters = hero.title[lang].split("");
   let titleTypedChar = "";
   let index = 0;
+
   setTimeout(() => {
     const titleInterval = setInterval(() => {
       if (index >= titlePhraseLetters.length) {
@@ -17,18 +20,24 @@
             titleTypedChar += ".";
             index++;
           }
-        }, 750);
+        }, 1000);
       } else {
         titleTypedChar += titlePhraseLetters[index];
         index++;
       }
     }, 150);
-  }, 1000);
+  }, 1500);
+
+  onMount(() => (ready = true));
 </script>
 
 <div class="hero-content">
   <div class="hero-title">
-    <h2>{`{ ${titleTypedChar} }`}</h2>
+    {#if ready}
+      <h2 transition:fade={{ delay: 200, duration: 750 }}>
+        {`{ ${titleTypedChar} }`}
+      </h2>
+    {/if}
   </div>
   <div class="hero-image-container">
     <!-- svelte-ignore a11y-img-redundant-alt -->
@@ -40,14 +49,14 @@
   </div>
 </div>
 
-<style>
+<style lang="scss">
   .hero-content {
     height: 100%;
     display: flex;
     grid-template-columns: 1fr 1fr;
-  }
-  .hero-content > * {
-    width: 100%;
+    & > * {
+      width: 100%;
+    }
   }
   .hero-title {
     position: relative;

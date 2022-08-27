@@ -38,7 +38,12 @@
     position: sticky;
     width: 100%;
     height: 100%;
-    border: 1px dashed teal;
+    background: rgba(81, 81, 81, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(204, 204, 204, 0.25);
     border-radius: 10px;
     display: flex;
     justify-content: space-around;
@@ -69,9 +74,6 @@
   .header-logo {
     height: 40px;
     border-radius: 7px;
-    &:hover + .logo-text {
-      color: grey;
-    }
   }
   .logo-text {
     transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
