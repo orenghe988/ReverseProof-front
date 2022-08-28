@@ -120,6 +120,11 @@
   dependencies:
     node-fetch "^3.2.5"
 
+"@astropub/icons@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@astropub/icons/-/icons-0.2.0.tgz#62e5c0ac1f89c84915c5596166e6a36c5a1125d9"
+  integrity sha512-qM/ldW/9rVHULNOZgz/23Yzgm2r3Iy2JJ1FuvJB6sFU67n61o1ImuXdHiaWSNoEHubD+IUkD9WG0hbhINgszqA==
+
 "@babel/code-frame@^7.18.6":
   version "7.18.6"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.18.6.tgz#3b25d38c89600baa2dcc219edfa88a74eb2c427a"
@@ -430,6 +435,11 @@
   version "1.0.0-next.21"
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
+
+"@popperjs/core@^2.9.2":
+  version "2.11.6"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.6.tgz#cee20bd55e68a1720bdab363ecf0c821ded4cd45"
+  integrity sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==
 
 "@proload/core@^0.3.2":
   version "0.3.2"
@@ -2647,6 +2657,11 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
+radix-icons-svelte@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/radix-icons-svelte/-/radix-icons-svelte-1.2.1.tgz#532706b0cd838cb8a832b1d7098d06c7f7ab534f"
+  integrity sha512-svmiMd0ocpdTm9cvAz0klcZpnh639lVctj6psQiawd4pYalVzOG4cX+JizAgRckyTAsRVdzObP7D2EBrSfdghA==
+
 react-dom@^18.0.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
@@ -3107,6 +3122,13 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
+
+svelte-easy-popover@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/svelte-easy-popover/-/svelte-easy-popover-1.0.0.tgz#bf3ea86bc9752c72766ac5df0b110b13ffb47166"
+  integrity sha512-3PFWhKYaGwd18ww7F/gX6VjFgZjABqQY385T0FduWz5WKFx+eTSF2k0x2ZcWIZ5RGuOMPqdHcGCqjLgrvtEZRg==
+  dependencies:
+    "@popperjs/core" "^2.9.2"
 
 svelte-hmr@^0.14.12:
   version "0.14.12"
