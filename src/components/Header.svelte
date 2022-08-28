@@ -1,6 +1,8 @@
 <script>
   import { isDark } from "../states/darkmode";
   import {
+    Globe,
+    DividerVertical,
     TwitterLogo,
     InstagramLogo,
     DiscordLogo,
@@ -32,13 +34,18 @@
         <span class="logo-text">ReverseProof</span>
       </a>
     </div>
-    <div class="language-wrapper" />
-    <div class="social-media">
-      {#each socialMediaLinks as { href, Icon }}
-        <a {href} class="social-media-icon">
-          <Icon />
-        </a>
-      {/each}
+    <div class="icons">
+      <div class="social-media">
+        {#each socialMediaLinks as { href, Icon }}
+          <a {href} class="social-media-icon">
+            <Icon />
+          </a>
+        {/each}
+      </div>
+      <DividerVertical color="dimgrey" size="40" style="margin: -20px;" />
+      <div class="language-wrapper">
+        <Globe class="language-globe" />
+      </div>
     </div>
   </div>
 </div>
@@ -102,15 +109,33 @@
       color: lightgrey;
     }
   }
+  .icons {
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: center;
+  }
+  .language-wrapper {
+    height: 100%;
+    width: auto;
+    margin: auto 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .social-media {
     height: 100%;
     width: auto;
-    padding: 0px 10px;
+    padding: 0px 5px;
     display: flex;
-    // align-items: center;
+    align-items: center;
     justify-content: space-evenly;
   }
   .social-media a {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: auto 10px;
     color: white;
   }
