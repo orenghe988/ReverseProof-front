@@ -1,11 +1,26 @@
 <script>
   import { isDark } from "../states/darkmode";
+  import {
+    Globe,
+    DividerVertical,
+    TwitterLogo,
+    InstagramLogo,
+    DiscordLogo,
+    GithubLogo,
+  } from "radix-icons-svelte";
   export let lang;
+
+  const socialMediaLinks = [
+    { href: "", Icon: TwitterLogo },
+    { href: "", Icon: InstagramLogo },
+    { href: "", Icon: DiscordLogo },
+    { href: "", Icon: GithubLogo },
+  ];
 </script>
 
 <div class="header-wrapper" style={$isDark ? "color: white" : ""}>
   <div class="header">
-    <div class={lang === "en" ? "logo-wrapper" : "logo-wrapper rtl-flex"}>
+    <div class="logo-wrapper">
       <a href="/" class="logo-link">
         <img
           src={$isDark
@@ -18,6 +33,19 @@
       <a href="/" class="logo-link">
         <span class="logo-text">ReverseProof</span>
       </a>
+    </div>
+    <div class="icons">
+      <div class="social-media">
+        {#each socialMediaLinks as { href, Icon }}
+          <a {href} class="social-media-icon">
+            <Icon />
+          </a>
+        {/each}
+      </div>
+      <DividerVertical color="dimgrey" size="40" style="margin: -20px;" />
+      <div class="language-wrapper">
+        <Globe class="language-globe" />
+      </div>
     </div>
   </div>
 </div>
@@ -46,7 +74,7 @@
     border: 1px solid rgba(204, 204, 204, 0.25);
     border-radius: 10px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
   }
   .logo-wrapper {
     display: inline-flex;
@@ -76,6 +104,42 @@
     border-radius: 7px;
   }
   .logo-text {
+    transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    &:hover {
+      color: lightgrey;
+    }
+  }
+  .icons {
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: center;
+  }
+  .language-wrapper {
+    height: 100%;
+    width: auto;
+    margin: auto 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .social-media {
+    height: 100%;
+    width: auto;
+    padding: 0px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .social-media a {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 10px;
+    color: white;
+  }
+  .social-media-icon {
     transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     &:hover {
       color: lightgrey;

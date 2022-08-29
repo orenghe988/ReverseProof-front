@@ -25,7 +25,7 @@
         titleTypedChar += titlePhraseLetters[index];
         index++;
       }
-    }, 150);
+    }, 100);
   }, 1500);
 
   onMount(() => (ready = true));
