@@ -1,5 +1,5 @@
 <script>
-  import { isDark } from "../states/darkmode";
+  import { isDark } from "../stores/darkmode";
   import {
     Globe,
     DividerVertical,
@@ -46,8 +46,6 @@
           <Globe />
         </a>
       </div>
-      <!-- <div class="language-wrapper">
-      </div> -->
     </div>
   </div>
 </div>

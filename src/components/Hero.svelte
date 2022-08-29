@@ -2,9 +2,9 @@
   export let lang;
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
-  import { hero } from "../text.json";
+  import { heroText } from "../text.json";
   let ready = false;
-  $: titlePhraseLetters = hero.title[lang].split("");
+  $: titlePhraseLetters = heroText.title[lang].split("");
   let titleTypedChar = "";
   let index = 0;
 
