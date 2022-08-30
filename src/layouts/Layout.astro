@@ -14,6 +14,13 @@ const { lang } = Astro.props;
     <head>
         <meta charset="utf-8" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&family=Miriam+Libre:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="prefetch" href="/assets/math.webp" crossorigin />
         <meta name="viewport" content="width=device-width" />
         <meta
             name="description"
@@ -24,7 +31,7 @@ const { lang } = Astro.props;
         <title>ReverseProof</title>
     </head>
     <body>
-        <Header lang={lang} client:idle />
+        <Header lang={lang} client:load />
 
         <section class="hero-section">
             <Hero lang={lang} client:load />
@@ -34,7 +41,7 @@ const { lang } = Astro.props;
         </section>
 
         <section id="animatedSquare-section">
-            <AnimatedSquare lang={lang} client:visible />
+            <AnimatedSquare lang={lang} client:idle />
         </section>
     </body>
 </html>
