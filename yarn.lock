@@ -80,14 +80,6 @@
   dependencies:
     prismjs "^1.28.0"
 
-"@astrojs/react@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/react/-/react-1.0.0.tgz#44f270e45a1608f623275c89d52fd1617315e2bf"
-  integrity sha512-CHJQ1dwjpYOTunioi02yWKdSxN/YeLP1vI70Xq+AqhcTmcmdbCMwbtYOEVwIK1k/AJmLItsJMcrsTfRoQU+Z+Q==
-  dependencies:
-    "@babel/core" ">=7.0.0-0 <8.0.0"
-    "@babel/plugin-transform-react-jsx" "^7.17.12"
-
 "@astrojs/svelte@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@astrojs/svelte/-/svelte-1.0.0.tgz#8abd0fcaeb35eca0258dd38d08f8c62c96f4b91d"
@@ -137,7 +129,7 @@
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.18.13.tgz#6aff7b350a1e8c3e40b029e46cbe78e24a913483"
   integrity sha512-5yUzC5LqyTFp2HLmDoxGQelcdYgSpP9xsnMWBphAscOdFrHSAVbLNzWiy32sVNDqJRDiJK6klfDnAgu6PAGSHw==
 
-"@babel/core@>=7.0.0-0 <8.0.0", "@babel/core@^7.18.2":
+"@babel/core@^7.18.2":
   version "7.18.13"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.18.13.tgz#9be8c44512751b05094a4d3ab05fc53a47ce00ac"
   integrity sha512-ZisbOvRRusFktksHSG6pjj1CSvkPkcZq/KHD45LAkVP/oiHJkNBZWfpvlLmX8OtHDG8IuzsFlVRWo08w7Qxn0A==

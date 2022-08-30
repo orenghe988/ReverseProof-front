@@ -1,5 +1,5 @@
 <script>
-  import { isDark } from "../states/darkmode";
+  import { isDark } from "../stores/darkmode";
   import {
     Globe,
     DividerVertical,
@@ -8,7 +8,7 @@
     DiscordLogo,
     GithubLogo,
   } from "radix-icons-svelte";
-  export let lang;
+  export let lang = "he";
 
   const socialMediaLinks = [
     { href: "", Icon: TwitterLogo },
@@ -37,14 +37,14 @@
     <div class="icons">
       <div class="social-media">
         {#each socialMediaLinks as { href, Icon }}
-          <a {href} class="social-media-icon">
+          <a {href}>
             <Icon />
           </a>
         {/each}
-      </div>
-      <DividerVertical color="dimgrey" size="40" style="margin: -20px;" />
-      <div class="language-wrapper">
-        <Globe class="language-globe" />
+        <DividerVertical color="dimgrey" size="40" style="margin: 0px -15px;" />
+        <a href={lang === "he" ? "/en" : "/he"}>
+          <Globe />
+        </a>
       </div>
     </div>
   </div>
@@ -78,9 +78,6 @@
   }
   .logo-wrapper {
     display: inline-flex;
-  }
-  .rtl-flex {
-    flex-direction: row-reverse;
   }
   .logo-wrapper > a {
     margin: auto;
@@ -138,8 +135,6 @@
     align-items: center;
     margin: auto 10px;
     color: white;
-  }
-  .social-media-icon {
     transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     &:hover {
       color: lightgrey;
