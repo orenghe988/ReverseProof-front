@@ -24,8 +24,8 @@
       <a href="/" class="logo-link">
         <img
           src={$isDark
-            ? "/assets/square-margin-fully-transparent.png"
-            : "/assets/square-margin.png"}
+            ? "/assets/square-margin-fully-transparent.webp"
+            : "/assets/square-margin.webp"}
           alt="header logo"
           class="header-logo"
         />

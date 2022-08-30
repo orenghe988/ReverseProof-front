@@ -65,7 +65,7 @@
     justify-content: center;
   }
   .square-image {
-    background-image: url("assets/square-margin-fully-transparent.png");
+    background-image: url("/assets/square-margin-fully-transparent.webp");
     background-repeat: no-repeat;
     background-size: cover;
     -webkit-position: sticky;
@@ -83,7 +83,7 @@
   .math-problem {
     position: absolute;
     // background-color: aliceblue;
-    background-image: url("assets/math.jpg");
+    background-image: url("/assets/math.webp");
     background-size: contain;
     top: calc(50% - calc(var(--problemSize) / 2));
     height: var(--problemSize);
