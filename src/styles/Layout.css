@@ -7,6 +7,10 @@ html {
     font-family: "Heebo", sans-serif;
     scroll-behavior: smooth;
 }
+body:after{
+    display:none;
+    content: url("/assets/manual-crop.jpg") url("/assets/square-margin-fully-transparent.webp") url("/assets/square-margin.webp") url("/assets/math.webp");
+}
 .hero-section {
     color: white;
     height: 100%;
