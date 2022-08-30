@@ -4,28 +4,28 @@
   import { onMount } from "svelte";
   import { heroText } from "../text.json";
   let ready = false;
-  $: titlePhraseLetters = heroText.title[lang].split("");
-  let titleTypedChar = "";
+  let titleOnPage = "";
   let index = 0;
+  $: titlePhraseLetters = heroText.title[lang].split("");
 
   setTimeout(() => {
     const titleInterval = setInterval(() => {
-      if (index >= titlePhraseLetters.length) {
+      if (index < titlePhraseLetters.length) {
+        titleOnPage += titlePhraseLetters[index];
+        index++;
+      } else {
         clearInterval(titleInterval);
         index = 0;
         const titleDotsInterval = setInterval(() => {
-          if (index >= 3) {
-            clearInterval(titleDotsInterval);
-          } else {
-            titleTypedChar += ".";
+          if (index < 3) {
+            titleOnPage += ".";
             index++;
+          } else {
+            clearInterval(titleDotsInterval);
           }
         }, 1000);
-      } else {
-        titleTypedChar += titlePhraseLetters[index];
-        index++;
       }
-    }, 100);
+    }, 150);
   }, 1500);
 
   onMount(() => (ready = true));
@@ -35,7 +35,7 @@
   <div class="hero-title">
     {#if ready}
       <h2 transition:fade={{ delay: 200, duration: 750 }}>
-        {`{ ${titleTypedChar} }`}
+        {`{ ${titleOnPage} }`}
       </h2>
     {/if}
   </div>
@@ -69,7 +69,7 @@
     display: flex;
   }
   .hero-image {
-    width: 45vw;
+    width: 50vw;
     object-fit: contain;
     margin: auto;
   }

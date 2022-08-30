@@ -4,5 +4,11 @@
             "he": "כניסה לעצלנים בלבד",
             "en": "Lazy people only"
         }
+    },
+    "animatedSquareText": {
+        "instruction": {
+            "he": "(תמשיכו לגלול, זה חלק מהאפקט)",
+            "en": "(continue scrolling)"
+        }
     }
 }

@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.svelte";
 import Hero from "../components/Hero.svelte";
+import AnimatedSquare from "../components/AnimatedSquare.svelte";
 import ScrollDown from "../components/ScrollDown.astro";
 import "../styles/Layout.css";
 export interface Props {
@@ -18,15 +19,17 @@ const { lang } = Astro.props;
         <title>ReverseProof</title>
     </head>
     <body>
-        <Header lang={lang} client:only="svelte" />
+        <Header lang={lang} client:idle />
 
-        <section class="hero">
+        <section class="hero-section">
             <Hero lang={lang} client:load />
             <div class="scrollDown-container">
                 <ScrollDown />
             </div>
         </section>
 
-        <!-- <section>hello section.</section> -->
+        <section id="animatedSquare-section">
+            <AnimatedSquare lang={lang} client:visible />
+        </section>
     </body>
 </html>
