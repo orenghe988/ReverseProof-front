@@ -16,7 +16,10 @@
     { href: "", Icon: DiscordLogo },
     { href: "", Icon: GithubLogo },
   ];
+  $: innerWidth = 0;
 </script>
+
+<svelte:window bind:innerWidth />
 
 <div class="header-wrapper" style={$isDark ? "color: white" : ""}>
   <div class="header">
@@ -34,19 +37,25 @@
         <span class="logo-text">ReverseProof</span>
       </a>
     </div>
-    <div class="icons">
-      <div class="social-media">
-        {#each socialMediaLinks as { href, Icon }}
-          <a {href}>
-            <Icon />
+    {#if innerWidth > 425}
+      <div class="icons">
+        <div class="social-media">
+          {#each socialMediaLinks as { href, Icon }}
+            <a {href}>
+              <Icon />
+            </a>
+          {/each}
+          <DividerVertical
+            color="dimgrey"
+            size="40"
+            style="margin: 0px -15px;"
+          />
+          <a href={lang === "he" ? "/en" : "/he"}>
+            <Globe />
           </a>
-        {/each}
-        <DividerVertical color="dimgrey" size="40" style="margin: 0px -15px;" />
-        <a href={lang === "he" ? "/en" : "/he"}>
-          <Globe />
-        </a>
+        </div>
       </div>
-    </div>
+    {/if}
   </div>
 </div>
 
@@ -99,8 +108,6 @@
   .header-logo {
     height: 40px;
     border-radius: 7px;
-  }
-  .logo-text {
     transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     &:hover {
       color: lightgrey;
@@ -138,6 +145,12 @@
     transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     &:hover {
       color: lightgrey;
+    }
+  }
+  @media (max-width: 425px) {
+    //TODO temporaty!!
+    .header {
+      justify-content: center;
     }
   }
 </style>
