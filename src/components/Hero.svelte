@@ -42,7 +42,7 @@
   <div class="hero-image-container">
     <!-- svelte-ignore a11y-img-redundant-alt -->
     <img
-      src="assets/manual-crop.jpg"
+      src="/assets/manual-crop.jpg"
       alt="hero-image"
       class={lang === "en" ? "hero-image flipped" : "hero-image"}
     />
