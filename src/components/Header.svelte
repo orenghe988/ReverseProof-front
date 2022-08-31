@@ -37,7 +37,7 @@
         <span class="logo-text">ReverseProof</span>
       </a>
     </div>
-    {#if innerWidth > 425}
+    {#if innerWidth > 768}
       <div class="icons">
         <div class="social-media">
           {#each socialMediaLinks as { href, Icon }}
@@ -147,7 +147,7 @@
       color: lightgrey;
     }
   }
-  @media (max-width: 425px) {
+  @media (max-width: 768px) {
     //TODO temporaty!!
     .header {
       justify-content: center;
