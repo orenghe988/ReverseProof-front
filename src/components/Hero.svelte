@@ -42,7 +42,7 @@
       </h2>
     {/if}
   </div>
-  {#if innerWidth > 425}
+  {#if innerWidth > 768}
     <div class="hero-image-container">
       <!-- svelte-ignore a11y-img-redundant-alt -->
       <img
@@ -81,7 +81,7 @@
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
   }
-  @media (max-width: 425px) {
+  @media (max-width: 768px) {
     .hero-content {
       flex-direction: column;
       background-image: url("/assets/manual-crop-mobile.jpg");
