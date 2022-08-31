@@ -29,7 +29,10 @@
   }, 1500);
 
   onMount(() => (ready = true));
+  $: innerWidth = 0;
 </script>
+
+<svelte:window bind:innerWidth />
 
 <div class="hero-content">
   <div class="hero-title">
@@ -39,21 +42,22 @@
       </h2>
     {/if}
   </div>
-  <div class="hero-image-container">
-    <!-- svelte-ignore a11y-img-redundant-alt -->
-    <img
-      src="/assets/manual-crop.jpg"
-      alt="hero-image"
-      class={lang === "en" ? "hero-image flipped" : "hero-image"}
-    />
-  </div>
+  {#if innerWidth > 425}
+    <div class="hero-image-container">
+      <!-- svelte-ignore a11y-img-redundant-alt -->
+      <img
+        src="/assets/manual-crop.jpg"
+        alt="hero-image"
+        class={lang === "en" ? "hero-image flipped" : "hero-image"}
+      />
+    </div>
+  {/if}
 </div>
 
 <style lang="scss">
   .hero-content {
     height: 100%;
     display: flex;
-    grid-template-columns: 1fr 1fr;
     & > * {
       width: 100%;
     }
@@ -76,5 +80,18 @@
   .flipped {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
+  }
+  @media (max-width: 425px) {
+    .hero-content {
+      flex-direction: column;
+      background-image: url("/assets/manual-crop-mobile.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      transform: translateY(10vh);
+    }
+    .hero-title {
+      font-size: 5.5vw;
+      bottom: 30vh;
+    }
   }
 </style>
