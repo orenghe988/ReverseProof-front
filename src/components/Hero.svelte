@@ -23,7 +23,7 @@
           } else {
             clearInterval(titleDotsInterval);
           }
-        }, 1000);
+        }, 500);
       }
     }, 150);
   }, 1500);

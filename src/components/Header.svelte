@@ -11,10 +11,13 @@
   export let lang = "he";
 
   const socialMediaLinks = [
-    { href: "", Icon: TwitterLogo },
-    { href: "", Icon: InstagramLogo },
+    { href: "https://twitter.com/ReverseProofDev", Icon: TwitterLogo },
+    { href: "https://www.instagram.com/reverseproof/", Icon: InstagramLogo },
     { href: "", Icon: DiscordLogo },
-    { href: "", Icon: GithubLogo },
+    {
+      href: "https://github.com/orenghe988/ReverseProof-front",
+      Icon: GithubLogo,
+    },
   ];
   $: innerWidth = 0;
 </script>
