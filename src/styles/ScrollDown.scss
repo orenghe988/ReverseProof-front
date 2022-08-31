@@ -1,5 +1,3 @@
-/* credit to Peter McGriff: https://codepen.io/pmcgriff */
-
 [data-ca3_icon]::before {
     font-weight: normal;
     content: attr(data-ca3_icon);
@@ -13,35 +11,34 @@
 
 .ca3-scroll-down-link {
   cursor:pointer;
-  height: 40px;
-  width: 40px;
+  height: 55px;
+  width: 55px;
   position: absolute;
-  /* left: 50%; */
   bottom: 3vh;
   color: #FFF;
   text-align: center;
   text-decoration: none;
   text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
-
-  -webkit-animation: ca3_fade_move_down 2s ease-in-out infinite;
-  -moz-animation:    ca3_fade_move_down 2s ease-in-out infinite;
-  animation:         ca3_fade_move_down 2s ease-in-out infinite;
+  transition: transform cubic-bezier(0.23, 1, 0.320, 1) 0.5s;
+  &:hover {
+    transform: translateY(20px);
+  }
 }
 
 
 /*animated scroll arrow animation*/
-@-webkit-keyframes ca3_fade_move_down {
-  0%   { -webkit-transform:translate(0,-20px); opacity: 0;  }
-  50%  { opacity: 1;  }
-  100% { -webkit-transform:translate(0,20px); opacity: 0; }
-}
-@-moz-keyframes ca3_fade_move_down {
-  0%   { -moz-transform:translate(0,-20px); opacity: 0;  }
-  50%  { opacity: 1;  }
-  100% { -moz-transform:translate(0,20px); opacity: 0; }
-}
-@keyframes ca3_fade_move_down {
-  0%   { transform:translate(0,-20px); opacity: 0;  }
-  50%  { opacity: 1;  }
-  100% { transform:translate(0,20px); opacity: 0; }
-}
+// @-webkit-keyframes ca3_fade_move_down {
+//   0%   { -webkit-transform:translate(0,-0px); opacity: 100;  }
+//   50%  { opacity: 1;  }
+//   100% { -webkit-transform:translate(0,20px); opacity: 100; }
+// }
+// @-moz-keyframes ca3_fade_move_down {
+//   0%   { -moz-transform:translate(0,-0px); opacity: 100;  }
+//   50%  { opacity: 1;  }
+//   100% { -moz-transform:translate(0,20px); opacity: 100; }
+// }
+// @keyframes ca3_fade_move_down {
+//   0%   { transform:translate(0,-20px); opacity: 100;  }
+//   50%  { opacity: 1;  }
+//   100% { transform:translate(0,20px); opacity: 100; }
+// }

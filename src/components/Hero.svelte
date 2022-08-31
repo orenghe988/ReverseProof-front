@@ -35,7 +35,7 @@
 <svelte:window bind:innerWidth />
 
 <div class="hero-content">
-  <div class="hero-title">
+  <div class="hero-title-container">
     {#if ready}
       <h2 transition:fade={{ delay: 200, duration: 750 }}>
         {`{ ${titleOnPage} }`}
@@ -43,14 +43,14 @@
     {/if}
   </div>
   {#if innerWidth > 768}
-    <div class="hero-image-container">
-      <!-- svelte-ignore a11y-img-redundant-alt -->
-      <img
-        src="/assets/manual-crop.jpg"
-        alt="hero-image"
-        class={lang === "en" ? "hero-image flipped" : "hero-image"}
-      />
-    </div>
+    <!-- <div class="hero-image-container"> -->
+    <!-- svelte-ignore a11y-img-redundant-alt -->
+    <img
+      src="/assets/manual-crop.jpg"
+      alt="hero-image"
+      class={lang === "en" ? "hero-image flipped" : "hero-image"}
+    />
+    <!-- </div> -->
   {/if}
 </div>
 
@@ -62,15 +62,15 @@
       width: 100%;
     }
   }
-  .hero-title {
+  .hero-title-container {
     position: relative;
     text-align: center;
     margin: auto;
     bottom: 10vh;
     font-size: 30px;
   }
-  .hero-image-container {
-    display: flex;
+  .hero-title-container > h2 {
+    margin: 0px;
   }
   .hero-image {
     width: 50vw;
@@ -89,7 +89,7 @@
       background-size: cover;
       transform: translateY(10vh);
     }
-    .hero-title {
+    .hero-title-container {
       font-size: 5.5vw;
       bottom: 30vh;
     }

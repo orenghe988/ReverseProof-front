@@ -5,44 +5,44 @@ import AnimatedSquare from "../components/AnimatedSquare.svelte";
 import ScrollDown from "../components/ScrollDown.astro";
 import "../styles/Layout.css";
 export interface Props {
-    lang: string;
+  lang: string;
 }
 const { lang } = Astro.props;
 ---
 
 <html lang={lang} dir={lang === "he" ? "rtl" : "ltr"}>
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&family=Miriam+Libre:wght@400;700&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="prefetch" href="/assets/math.webp" crossorigin />
-        <meta name="viewport" content="width=device-width" />
-        <meta
-            name="description"
-            content="ReverseProof's algorithm aims to simplify and reduce geometry problems to a simple statement & proof table "
-        />
-        <meta name="generator" content={Astro.generator} />
-        <meta name="theme-color" content="#393e46" />
-        <title>ReverseProof</title>
-    </head>
-    <body>
-        <Header lang={lang} client:load />
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&family=Miriam+Libre:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="prefetch" href="/assets/math.webp" crossorigin />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="ReverseProof's algorithm aims to simplify and reduce geometry problems to a simple statement & proof table "
+    />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#393e46" />
+    <title>ReverseProof</title>
+  </head>
+  <body>
+    <Header lang={lang} client:load />
 
-        <section class="hero-section">
-            <Hero lang={lang} client:load />
-            <div class="scrollDown-container">
-                <ScrollDown />
-            </div>
-        </section>
+    <section class="hero-section">
+      <Hero lang={lang} client:load />
+      <div class="scrollDown-container">
+        <ScrollDown />
+      </div>
+    </section>
 
-        <section id="animatedSquare-section">
-            <AnimatedSquare lang={lang} client:idle />
-        </section>
-    </body>
+    <section id="animatedSquare-section">
+      <AnimatedSquare lang={lang} client:idle />
+    </section>
+  </body>
 </html>
