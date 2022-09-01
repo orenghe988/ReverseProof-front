@@ -6,6 +6,7 @@
   $: instructionVisible = animationProgress >= 0.8 ? true : false;
   $: problemVisible = animationProgress >= 1.25 ? true : false;
   $: sizeFactor = innerWidth < 768 ? 0.7 : 1;
+  $: isShaking = animationProgress >= 3 ? true : false;
   $: squareSize = () => {
     switch (true) {
       case animationProgress < 2:
@@ -38,9 +39,9 @@
 
 <div
   class="animatedSquare-container"
-  style="--squareSize: {squareSize()}vh; --problemSize: {problemSize()}vh"
+  style="--squareSize: {squareSize()}vh; --problemSize: {problemSize()}vh;"
 >
-  <div class="square-image">
+  <div class={isShaking ? "square-image shaking" : "square-image"}>
     {#if problemVisible}
       <div class="math-problem-container">
         <div class="math-problem" transition:fly={{ y: -100, duration: 750 }} />
@@ -78,13 +79,15 @@
     padding: 0px;
     transition: height 0.3s, width 0.3s, top 0.3s;
   }
+  .square-image.shaking {
+    background-color: yellow;
+  }
   .math-problem-container {
     display: flex;
     justify-content: center;
   }
   .math-problem {
     position: absolute;
-    // background-color: aliceblue;
     background-image: url("/assets/math.webp");
     background-size: contain;
     top: calc(50% - calc(var(--problemSize) / 2));
