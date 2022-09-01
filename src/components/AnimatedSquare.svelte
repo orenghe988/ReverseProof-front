@@ -2,37 +2,39 @@
   import { fade, fly } from "svelte/transition";
   import { isDark } from "../stores/darkmode";
   import { animatedSquareText } from "../text.json";
-  let scrollY;
-  let innerHeight;
   $: animationProgress = scrollY / innerHeight;
-  $: instructionVisible = animationProgress >= 0.85 ? true : false;
-  $: problemVisible = animationProgress >= 1.2 ? true : false;
+  $: instructionVisible = animationProgress >= 0.8 ? true : false;
+  $: problemVisible = animationProgress >= 1.25 ? true : false;
+  $: sizeFactor = innerWidth < 768 ? 0.7 : 1;
   $: squareSize = () => {
     switch (true) {
-      case animationProgress < 1.5:
-        return 75;
-      case animationProgress < 1.7:
-        return 65;
       case animationProgress < 2:
-        return 50;
-      case animationProgress < 2.3:
-        return 35;
+        return 60 * sizeFactor;
+      case animationProgress < 2.5:
+        return 55 * sizeFactor;
+      case animationProgress < 3:
+        return 40 * sizeFactor;
+      case animationProgress < 3.5:
+        return 25 * sizeFactor;
     }
   };
   $: problemSize = () => {
     switch (true) {
-      case animationProgress < 1.7:
-        return 30;
-      case animationProgress < 2:
-        return 24;
-      case animationProgress < 2.3:
-        return 16.5;
+      case animationProgress < 2.5:
+        return 32 * sizeFactor;
+      case animationProgress < 3:
+        return 23 * sizeFactor;
+      case animationProgress < 3.5:
+        return 14.5 * sizeFactor;
     }
   };
+  let scrollY;
+  let innerHeight;
+  let innerWidth;
   export let lang;
 </script>
 
-<svelte:window bind:scrollY bind:innerHeight />
+<svelte:window bind:scrollY bind:innerHeight bind:innerWidth />
 
 <div
   class="animatedSquare-container"
@@ -41,7 +43,7 @@
   <div class="square-image">
     {#if problemVisible}
       <div class="math-problem-container">
-        <div class="math-problem" transition:fly={{ y: -100 }} />
+        <div class="math-problem" transition:fly={{ y: -100, duration: 750 }} />
       </div>
     {/if}
   </div>
@@ -65,7 +67,7 @@
     justify-content: center;
   }
   .square-image {
-    background-image: url("/assets/square-margin-fully-transparent.webp");
+    background-image: url("/assets/square-only-fully-transparent.png");
     background-repeat: no-repeat;
     background-size: cover;
     -webkit-position: sticky;
