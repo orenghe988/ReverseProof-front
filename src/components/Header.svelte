@@ -44,7 +44,7 @@
       <div class="icons">
         <div class="social-media">
           {#each socialMediaLinks as { href, Icon }}
-            <a {href}>
+            <a {href} class={!$isDark ? "light-mode" : ""}>
               <Icon />
             </a>
           {/each}
@@ -53,7 +53,10 @@
             size="40"
             style="margin: 0px -15px;"
           />
-          <a href={lang === "he" ? "/en" : "/he"}>
+          <a
+            href={lang === "he" ? "/en" : "/he"}
+            class={!$isDark ? "light-mode" : ""}
+          >
             <Globe />
           </a>
         </div>
@@ -150,8 +153,11 @@
     margin: auto 10px;
     color: white;
     transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    &.light-mode {
+      color: black;
+    }
     &:hover {
-      color: lightgrey;
+      color: grey;
     }
   }
   @media (max-width: 768px) {

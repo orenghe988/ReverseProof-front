@@ -21,7 +21,9 @@ const { lang } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&family=Miriam+Libre:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="prefetch" href="/assets/math.webp" crossorigin />
+    <link rel="prefetch" href="/assets/problem.webp" crossorigin />
+    <link rel="prefetch" href="/assets/proof-hebrew.jpg" crossorigin />
+    <link rel="prefetch" href="/assets/proof-english.jpg" crossorigin />
     <meta name="viewport" content="width=device-width" />
     <meta
       name="description"
@@ -43,6 +45,9 @@ const { lang } = Astro.props;
 
     <section id="animatedSquare-section">
       <AnimatedSquare lang={lang} client:idle />
+    </section>
+    <section>
+      <div style="height: 200vh"></div>
     </section>
   </body>
 </html>
