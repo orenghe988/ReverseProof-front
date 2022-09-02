@@ -10,5 +10,9 @@
             "he": "(תמשיכו לגלול, זה חלק מהאפקט)",
             "en": "(continue scrolling)"
         }
+    },
+    "explanation": {
+            "he": "הסבר",
+            "en": "explanation"
     }
 }

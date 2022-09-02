@@ -3,7 +3,8 @@
   import { isDark } from "../stores/darkmode";
   import { animatedSquareText } from "../text.json";
   $: animationProgress = scrollY / innerHeight;
-  $: instructionVisible = animationProgress >= 0.8 ? true : false;
+  $: instructionVisible =
+    animationProgress >= 0.8 && animationProgress <= 5 ? true : false;
   $: mathVisible =
     animationProgress >= 1.25 && animationProgress <= 4.4 ? true : false;
   $: sizeFactor = innerWidth < 768 ? 0.7 : 1;
@@ -44,12 +45,15 @@
 <svelte:window bind:scrollY bind:innerHeight bind:innerWidth />
 
 <div
-  class={animationProgress <= 3
-    ? "animatedSquare-container dark"
-    : animationProgress >= 3.75
-    ? "animatedSquare-container light"
-    : "animatedSquare-container red"}
-  style="--squareSize: {squareSize()}vh; --mathSize: {mathSize()}vh;"
+  class="animatedSquare-container"
+  style="--squareSize: {squareSize()}vh; --mathSize: {mathSize()}vh; --container-text-color: {animationProgress >=
+  3.75
+    ? 'black'
+    : 'white'}; --container-background-color: {animationProgress >= 3.75
+    ? 'white'
+    : animationProgress >= 3
+    ? '#8b0000'
+    : 'rgb(15, 15, 15)'};"
 >
   <div
     class={$isDark
@@ -71,9 +75,9 @@
     {/if}
   </div>
   {#if instructionVisible}
-    <p class="animation-progress-demo" transition:fade={{ duration: 100 }}>
+    <!-- <p class="animation-progress-demo" transition:fade={{ duration: 100 }}>
       {Math.round(animationProgress * 100) / 100}
-    </p>
+    </p> -->
     <p class="instruction" transition:fade={{ duration: 100 }}>
       {animatedSquareText.instruction[lang]}
     </p>
@@ -88,19 +92,8 @@
     justify-content: center;
     transition: background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1);
     -webkit-transition: background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-
-    &.dark {
-      color: white;
-      background-color: rgb(15, 15, 15);
-    }
-    &.red {
-      color: white;
-      background-color: #8b0000;
-    }
-    &.light {
-      color: black;
-      background-color: white;
-    }
+    color: var(--container-text-color);
+    background-color: var(--container-background-color);
   }
   .square-image {
     background-repeat: no-repeat;

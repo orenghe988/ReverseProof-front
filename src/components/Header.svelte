@@ -11,12 +11,21 @@
   export let lang = "he";
 
   const socialMediaLinks = [
-    { href: "https://twitter.com/ReverseProofDev", Icon: TwitterLogo },
-    { href: "https://www.instagram.com/reverseproof/", Icon: InstagramLogo },
-    { href: "", Icon: DiscordLogo },
+    {
+      href: "https://twitter.com/ReverseProofDev",
+      Icon: TwitterLogo,
+      color: "#00acee",
+    },
+    {
+      href: "https://www.instagram.com/reverseproof/",
+      Icon: InstagramLogo,
+      color: "#E4405F",
+    },
+    { href: "", Icon: DiscordLogo, color: "#5865F2" },
     {
       href: "https://github.com/orenghe988/ReverseProof-front",
       Icon: GithubLogo,
+      color: "black",
     },
   ];
   $: innerWidth = 0;
@@ -25,7 +34,12 @@
 <svelte:window bind:innerWidth />
 
 <div class="header-wrapper" style={$isDark ? "color: white" : ""}>
-  <div class="header">
+  <div
+    class="header"
+    style="--header-border-color: {$isDark
+      ? 'rgba(204, 204, 204, 0.25)'
+      : 'rgba(15, 15, 15, 0.25)'};"
+  >
     <div class="logo-wrapper">
       <a href="/" class="logo-link">
         <img
@@ -42,21 +56,22 @@
     </div>
     {#if innerWidth > 768}
       <div class="icons">
-        <div class="social-media">
-          {#each socialMediaLinks as { href, Icon }}
-            <a {href} class={!$isDark ? "light-mode" : ""}>
+        {#each socialMediaLinks as { href, Icon, color }}
+          <div
+            style="--icon-container-color: {$isDark ? 'transparent' : color};"
+          >
+            <a {href}>
               <Icon />
             </a>
-          {/each}
-          <DividerVertical
-            color="dimgrey"
-            size="40"
-            style="margin: 0px -15px;"
-          />
-          <a
-            href={lang === "he" ? "/en" : "/he"}
-            class={!$isDark ? "light-mode" : ""}
-          >
+          </div>
+        {/each}
+        <DividerVertical color="dimgrey" size="40" style="margin: 0px -15px;" />
+        <div
+          style="--icon-container-color: {$isDark
+            ? 'transparent'
+            : 'rgb(57,62,70)'};"
+        >
+          <a href={lang === "he" ? "/en" : "/he"} style="--icon-color: white;">
             <Globe />
           </a>
         </div>
@@ -84,9 +99,9 @@
     background: rgba(81, 81, 81, 0.1);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(204, 204, 204, 0.25);
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
+    border: 1px solid var(--header-border-color);
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
@@ -126,38 +141,32 @@
   .icons {
     height: 100%;
     width: auto;
-    display: flex;
-    align-items: center;
-  }
-  .language-wrapper {
-    height: 100%;
-    width: auto;
-    margin: auto 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .social-media {
-    height: 100%;
-    width: auto;
     padding: 0px 5px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
   }
-  .social-media a {
-    height: 100%;
+  .icons div {
+    height: 25px;
+    width: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto 10px;
-    color: white;
+    -webkit-transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-    &.light-mode {
-      color: black;
-    }
+    background-color: var(--icon-container-color);
+    border-radius: 4px;
+  }
+  .icons div a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    color: white;
     &:hover {
-      color: grey;
+      color: lightgrey !important;
     }
   }
   @media (max-width: 768px) {
