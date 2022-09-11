@@ -2,39 +2,33 @@
   import { fade, fly } from "svelte/transition";
   import { isDark } from "../stores/darkmode";
   import { animatedSquareText } from "../text.json";
+  const intervals = {
+    squareIntervals: [3, 4, 5, 6, 0],
+    squareSizes: [60, 55, 40, 25, 60],
+    mathIntervals: [4, 5, 6, 0],
+    mathSizes: [32, 23, 15, 28],
+  };
   $: animationProgress = scrollY / innerHeight;
   $: instructionVisible =
-    animationProgress >= 0.8 && animationProgress <= 5 ? true : false;
+    animationProgress >= 0.8 && animationProgress <= 7.5 ? true : false;
   $: mathVisible =
-    animationProgress >= 1.25 && animationProgress <= 4.4 ? true : false;
+    animationProgress >= 2.25 && animationProgress <= 6.8 ? true : false;
   $: sizeFactor = innerWidth < 768 ? 0.7 : 1;
-  $: isShaking = animationProgress >= 3 ? true : false;
-  $: animationProgress >= 3.75 ? isDark.set(false) : isDark.set(true);
+  $: isShaking = animationProgress >= 5 ? true : false;
+  $: animationProgress >= 6 ? isDark.set(false) : isDark.set(true);
   $: squareSize = () => {
-    switch (true) {
-      case animationProgress < 2:
-        return 60 * sizeFactor;
-      case animationProgress < 2.5:
-        return 55 * sizeFactor;
-      case animationProgress < 3:
-        return 40 * sizeFactor;
-      case animationProgress < 3.75:
-        return 25 * sizeFactor;
-      default:
-        return 60 * sizeFactor;
+    for (let [index, interval] of intervals.squareIntervals.entries()) {
+      if (animationProgress < interval)
+        return intervals.squareSizes[index] * sizeFactor;
     }
+    return intervals.squareSizes.at(-1) * sizeFactor;
   };
   $: mathSize = () => {
-    switch (true) {
-      case animationProgress < 2.5:
-        return 32 * sizeFactor;
-      case animationProgress < 3:
-        return 23 * sizeFactor;
-      case animationProgress < 3.75:
-        return 14.5 * sizeFactor;
-      default:
-        return 28 * sizeFactor;
+    for (let [index, interval] of intervals.mathIntervals.entries()) {
+      if (animationProgress < interval)
+        return intervals.mathSizes[index] * sizeFactor;
     }
+    return intervals.mathSizes.at(-1) * sizeFactor;
   };
   let scrollY;
   let innerHeight;
@@ -47,11 +41,11 @@
 <div
   class="animatedSquare-container"
   style="--squareSize: {squareSize()}vh; --mathSize: {mathSize()}vh; --container-text-color: {animationProgress >=
-  3.75
+  6
     ? 'black'
-    : 'white'}; --container-background-color: {animationProgress >= 3.75
+    : 'white'}; --container-background-color: {animationProgress >= 6
     ? 'white'
-    : animationProgress >= 3
+    : animationProgress >= 5
     ? '#8b0000'
     : 'rgb(15, 15, 15)'};"
 >
@@ -65,9 +59,7 @@
     {#if mathVisible}
       <div class="math-container">
         <div
-          class={animationProgress >= 3.75
-            ? "math proof-" + lang
-            : "math problem"}
+          class={animationProgress >= 6 ? "math proof-" + lang : "math problem"}
           in:fly={{ y: -100, duration: 750 }}
           out:fly={{ y: 100, duration: 750 }}
         />
@@ -75,9 +67,9 @@
     {/if}
   </div>
   {#if instructionVisible}
-    <!-- <p class="animation-progress-demo" transition:fade={{ duration: 100 }}>
+    <p class="animation-progress-demo" transition:fade={{ duration: 100 }}>
       {Math.round(animationProgress * 100) / 100}
-    </p> -->
+    </p>
     <p class="instruction" transition:fade={{ duration: 100 }}>
       {animatedSquareText.instruction[lang]}
     </p>
@@ -85,11 +77,14 @@
 </div>
 
 <style lang="scss">
-  .animatedSquare-container {
-    height: 450vh;
-    width: 100%;
+  @mixin centerFlexBox {
     display: flex;
     justify-content: center;
+  }
+  .animatedSquare-container {
+    @include centerFlexBox;
+    height: 700vh;
+    width: 100%;
     transition: background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1);
     -webkit-transition: background-color 1s cubic-bezier(0.165, 0.84, 0.44, 1);
     color: var(--container-text-color);
@@ -106,21 +101,22 @@
     padding: 0px;
     -webkit-transition: height 0.3s, width 0.3s, top 0.3s, background-image 0.3s;
     transition: height 0.3s, width 0.3s, top 0.3s, background-image 0.3s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29);
+    &.shaking {
+      animation: horizontal-shaking 0.3s;
+      animation-iteration-count: infinite;
+    }
     &.dark {
       background-image: url("/assets/square-only-fully-transparent.png");
-      border-radius: 40px;
+      border-radius: 42px;
     }
     &.light {
       background-image: url("/assets/square-margin.webp");
       border-radius: 40px;
     }
   }
-  .square-image.shaking {
-    //background-color: yellow;
-  }
   .math-container {
-    display: flex;
-    justify-content: center;
+    @include centerFlexBox;
   }
   .math {
     position: absolute;
@@ -151,5 +147,22 @@
     bottom: 5vh;
     margin: 10px;
     color: grey;
+  }
+  @keyframes horizontal-shaking {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(5px);
+    }
+    50% {
+      transform: translateX(-5px);
+    }
+    75% {
+      transform: translateX(5px);
+    }
+    100% {
+      transform: translateX(0);
+    }
   }
 </style>

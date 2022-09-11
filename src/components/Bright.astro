@@ -1,0 +1,29 @@
+---
+import More from "./More.svelte";
+import { bright, sentence } from "../text.json";
+import "../styles/Bright.scss";
+export interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+---
+
+<div class="bright-container">
+  <div class="grey-container">
+    <div class="flex">
+      <div class="pencil"></div>
+    </div>
+    <div class="flex">
+      {/* @ts-ignore */}
+      <span class="sentence">{sentence[lang]}</span>
+    </div>
+    <div class="flex">
+      {/* @ts-ignore */}
+      <More client:idle />
+    </div>
+  </div>
+  <div class="grey-container">
+    {/* @ts-ignore */}
+    <p>{sentence[lang]}</p>
+  </div>
+</div>

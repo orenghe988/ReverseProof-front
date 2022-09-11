@@ -23,10 +23,10 @@
           } else {
             clearInterval(titleDotsInterval);
           }
-        }, 500);
+        }, 300);
       }
     }, 150);
-  }, 1500);
+  }, 1000);
 
   onMount(() => (ready = true));
   $: innerWidth = 0;

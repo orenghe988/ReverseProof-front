@@ -51,11 +51,11 @@
         />
       </a>
       <a href="/" class="logo-link">
-        <span class="logo-text">ReverseProof</span>
+        <span class="logo-text">ReverseProof.cc</span>
       </a>
     </div>
     {#if innerWidth > 768}
-      <div class="icons">
+      <div class="icons-container">
         {#each socialMediaLinks as { href, Icon, color }}
           <div
             style="--icon-container-color: {$isDark ? 'transparent' : color};"
@@ -81,6 +81,10 @@
 </div>
 
 <style lang="scss">
+  @mixin centerFlexBox {
+    display: flex;
+    justify-content: center;
+  }
   .header-wrapper {
     position: fixed;
     width: 80vw;
@@ -98,9 +102,9 @@
     height: 100%;
     background: rgba(81, 81, 81, 0.1);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    -webkit-backdrop-filter: blur(40px);
-    backdrop-filter: blur(40px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
     border: 1px solid var(--header-border-color);
     border-radius: 10px;
     display: flex;
@@ -138,7 +142,7 @@
       color: grey;
     }
   }
-  .icons {
+  .icons-container {
     height: 100%;
     width: auto;
     padding: 0px 5px;
@@ -146,21 +150,19 @@
     align-items: center;
     justify-content: space-evenly;
   }
-  .icons div {
+  .icons-container div {
+    @include centerFlexBox;
     height: 25px;
     width: 25px;
-    display: flex;
-    justify-content: center;
     align-items: center;
     margin: auto 10px;
     -webkit-transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     background-color: var(--icon-container-color);
-    border-radius: 4px;
+    border-radius: 25%;
   }
-  .icons div a {
-    display: flex;
-    justify-content: center;
+  .icons-container div a {
+    @include centerFlexBox;
     align-items: center;
     -webkit-transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
