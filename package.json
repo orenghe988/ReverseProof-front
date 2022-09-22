@@ -16,6 +16,7 @@
     "react-dom": "^18.0.0",
     "sass": "^1.54.5",
     "svelte": "^3.46.4",
+    "svelte-intersection-observer": "^0.10.0",
     "svelte-types": "^0.0.7"
   },
   "dependencies": {

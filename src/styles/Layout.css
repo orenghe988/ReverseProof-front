@@ -5,10 +5,16 @@ html {
     width: 100vw;
     font-family: "Heebo", sans-serif;
     scroll-behavior: smooth;
+    overflow-x: clip;
 }
-.hero-section {
+#hero-section {
     color: white;
     height: 100%;
+    background-color: rgb(15, 15, 15);
+}
+#animatedSquare-section {
+    color: white;
+    height: 100vh;
     background-color: rgb(15, 15, 15);
 }
 .scrollDown-container {

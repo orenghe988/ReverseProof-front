@@ -5,6 +5,12 @@
             "en": "Lazy people only"
         }
     },
+    "showcaseText": {
+        "showcaseFirstText": {
+            "en": "hello there!",
+            "he": "שלום לכם!"
+        }
+    },
     "animatedSquareText": {
         "instruction": {
             "he": "(תמשיכו לגלול, זה חלק מהאפקט)",

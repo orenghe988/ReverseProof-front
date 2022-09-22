@@ -38,7 +38,9 @@
   <div class="hero-title-container">
     {#if ready}
       <h2 transition:fade={{ delay: 200, duration: 750 }}>
-        {`{ ${titleOnPage} }`}
+        <a href="#animatedSquare-section">
+          {`{ ${titleOnPage} }`}
+        </a>
       </h2>
     {/if}
   </div>
@@ -71,6 +73,10 @@
   }
   .hero-title-container > h2 {
     margin: 0px;
+    & a {
+      text-decoration: none;
+      color: white;
+    }
   }
   .hero-image {
     width: 50vw;

@@ -1,56 +1,63 @@
 ---
-import Header from "../components/Header.svelte";
-import Hero from "../components/Hero.svelte";
-import ScrollDown from "../components/ScrollDown.astro";
-import AnimatedSquare from "../components/AnimatedSquare.svelte";
-import Bright from "../components/Bright.astro";
-import Footer from "../components/Footer.astro";
-import "../styles/Layout.css";
+import Header from '../components/Header.svelte';
+import Hero from '../components/Hero.svelte';
+import ScrollDown from '../components/ScrollDown.astro';
+import AnimatedSquare from '../components/AnimatedSquare.svelte';
+import Showcase from '../components/Showcase.svelte';
+import Bright from '../components/Bright.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/Layout.css';
 export interface Props {
-  lang: string;
+	lang: string;
 }
 const { lang } = Astro.props;
 ---
 
-<html lang={lang} dir={lang === "he" ? "rtl" : "ltr"}>
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&family=Miriam+Libre:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="prefetch" href="/assets/problem.webp" crossorigin />
-    <link rel="prefetch" href="/assets/proof-hebrew.jpg" crossorigin />
-    <link rel="prefetch" href="/assets/proof-english.jpg" crossorigin />
-    <meta name="viewport" content="width=device-width" />
-    <meta
-      name="description"
-      content="ReverseProof's algorithm aims to simplify and reduce geometry problems to a simple statement & proof table"
-    />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#393e46" />
-    <title>ReverseProof</title>
-  </head>
-  <body>
-    <Header lang={lang} client:load />
+<html lang={lang} dir={lang === 'he' ? 'rtl' : 'ltr'}>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&family=Miriam+Libre:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="preload" as="image" href="/assets/problem.webp" />
+		<link rel="preload" as="image" href="/assets/manual-crop.webp" />
+		<link
+			rel="preload"
+			as="image"
+			href="/assets/square-margin-fully-transparent.webp"
+		/>
+		<link rel="preload" as="image" href="/assets/square-margin.webp" />
+		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="description"
+			content="ReverseProof's algorithm aims to simplify and reduce geometry problems to a simple statement & proof table"
+		/>
+		<meta name="generator" content={Astro.generator} />
+		<meta name="theme-color" content="#393e46" />
+		<title>ReverseProof.cc</title>
+	</head>
+	<body>
+		<Header lang={lang} client:load />
 
-    <section class="hero-section">
-      <Hero lang={lang} client:load />
-      <div class="scrollDown-container">
-        <ScrollDown />
-      </div>
-    </section>
+		<section id="hero-section">
+			<Hero lang={lang} client:load />
+			<div class="scrollDown-container">
+				<ScrollDown />
+			</div>
+		</section>
 
-    <section id="animatedSquare-section">
-      <AnimatedSquare lang={lang} client:idle />
-    </section>
-    <section id="bright-section">
+		<section id="animatedSquare-section">
+			<!-- <AnimatedSquare lang={lang} client:idle /> -->
+			<Showcase lang={lang} client:idle />
+		</section>
+		<!-- <section id="bright-section">
       <Bright lang={lang} />
-    </section>
-    <!-- <Footer /> -->
-  </body>
+    </section> -->
+		<!-- <Footer /> -->
+	</body>
 </html>
