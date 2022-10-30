@@ -10,11 +10,13 @@
     "astro": "astro"
   },
   "devDependencies": {
+    "@astrojs/solid-js": "^1.1.0",
     "@astrojs/svelte": "^1.0.0",
     "astro": "^1.0.8",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "sass": "^1.54.5",
+    "solid-js": "^1.4.3",
     "svelte": "^3.46.4",
     "svelte-intersection-observer": "^0.10.0",
     "svelte-types": "^0.0.7"
@@ -22,6 +24,9 @@
   "dependencies": {
     "@astropub/icons": "^0.2.0",
     "@nanostores/react": "^0.3.0",
+    "@solid-primitives/intersection-observer": "^2.0.1",
+    "@steeze-ui/heroicons": "^2.1.0",
+    "@steeze-ui/solid-icon": "^1.0.0",
     "@types/react": "^18.0.17",
     "nanostores": "^0.6.0",
     "radix-icons-svelte": "^1.2.1",

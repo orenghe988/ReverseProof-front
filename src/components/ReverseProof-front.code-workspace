@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../reverseproof-worker-experimental"
+		}
+	],
+	"settings": {
+		"nuxt.isNuxtApp": false
+	}
+}

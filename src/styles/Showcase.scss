@@ -1,0 +1,248 @@
+@use '../styles/mixins';
+	* {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-o-box-sizing: border-box;
+		box-sizing: border-box;
+        animation-fill-mode: forwards;
+	}
+	.showcase-container {
+		@include mixins.flex-center;
+		height: 100vh;
+		width: 100vw;
+		background-color: rgb(15, 15, 15);
+        &.animate {
+            animation-name: redBackground, whitenBackground;
+            animation-duration: 300ms;
+            animation-delay: 2900ms, 4900ms;
+        }
+	}
+	.showcase-field {
+        @include mixins.flex-center;
+        align-content: center;
+		height: 50vh;
+        width: 50vh;
+		align-self: center;
+		margin: 50px;
+		background-color: rgb(50, 50, 50);
+		border-radius: 30px;
+		color: white;
+        &.animate {
+            animation-name: transparentBackground, shrinkField, brightenField, expandField;
+            animation-duration: 300ms, 300ms, 300ms, 750ms;
+            animation-timing-function: ease, ease, ease, ease-in-out;
+            animation-delay: 2900ms, 4900ms, 5650ms, 5650ms;
+        }
+	}
+	.square-image {
+		@include mixins.flex-center;
+        position: relative;
+        margin: auto;
+        width: 45vh;
+        height: 45vh;
+        max-width: 30vw;
+        max-height: 30vw;
+		background-image: url('/assets/square-margin-fully-transparent.webp');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+        &.animate.he {
+            animation-name: squareImageShrinkingMedium, squareImageShrinkingTiny, squareImageShaking, toLightSquare, squareImageShrinkingTiny, squareImageShrinkingMedium, translateLeft;
+            animation-duration: 500ms, 500ms, 300ms, 300ms, 300ms, 500ms, 500ms;
+            animation-timing-function: cubic-bezier(0.76,0,0.24,1), cubic-bezier(0.76,0,0.24,1), cubic-bezier(0.76,0,0.24,1), cubic-bezier(0.76,0,0.24,1), cubic-bezier(0.76,0,0.24,1), cubic-bezier(0.76,0,0.24,1), ease-in-out;
+            animation-iteration-count: 1, 1, 6, 1, 1, 1, 1;
+            animation-delay: 1750ms, 2700ms, 3100ms, 4900ms, 4900ms, 6150ms, 6150ms;
+            animation-direction: normal, normal, normal, normal, reverse, reverse, normal;
+        }
+        &.animate.en {
+            animation-name: squareImageShrinkingMedium, squareImageShrinkingTiny, squareImageShaking, toLightSquare, squareImageShrinkingTiny, squareImageShrinkingMedium, translateRight;
+            animation-duration: 500ms, 500ms, 300ms, 300ms, 300ms, 500ms, 500ms;
+            animation-timing-function: cubic-bezier(0.76,0,0.24,1), cubic-bezier(0.76,0,0.24,1), cubic-bezier(0.76,0,0.24,1), cubic-bezier(0.76,0,0.24,1), cubic-bezier(0.76,0,0.24,1), cubic-bezier(0.76,0,0.24,1), ease-in-out;
+            animation-iteration-count: 1, 1, 6, 1, 1, 1, 1;
+            animation-delay: 1750ms, 2700ms, 3100ms, 4900ms, 4900ms, 6150ms, 6150ms;
+            animation-direction: normal, normal, normal, normal, reverse, reverse, normal;
+        }
+	}
+	.math-problem {
+		height: 42.5%;
+		width: 42.5%;
+		margin: auto;
+		border: 1px solid dimgrey;
+		border-radius: 7.5%;
+        opacity: 10%;
+		transform: translateY(-200px);
+        transition: height 0.3s 1s, width 0.3s 1s;
+        &.animate {
+            animation-name: mathProblemEntry, mathProblemPressure;
+            animation-duration: 1500ms, 400ms;
+            animation-timing-function: cubic-bezier(0.66,0,0.34,1), cubic-bezier(0.76,0,0.24,1);
+            animation-delay: 500ms, 1800ms;
+        }
+	}
+    .text-container {
+        @include mixins.flex-center;
+        align-content: center;
+        position: absolute;
+        height: 50vh;
+        width: 50vw;
+        padding: 25px;
+        color: black;
+        opacity: 0;
+        top: 125vh;
+        bottom: 25vh;
+        &.he {
+            right: 8.5vw;
+        }
+        &.en {
+            left: 8.5vw;
+        }
+        &.animate {
+            animation-name: appear;
+            animation-duration: 300ms;
+            animation-delay: 6650ms;
+            animation-fill-mode: forwards;
+        }
+        & p {
+            font-size: min(2.5vw, 16pt);
+            vertical-align: center;
+            margin: auto;
+        }
+    }
+    .replay-button {
+        @include mixins.flex-center;
+        position: absolute;
+        height: 40px;
+        width: 60px;
+        top: 187vh;
+        background-color: royalblue;
+        color: white;
+        font-size: 12pt;
+        border: 1px solid white;
+        border-radius: 10px;
+        cursor: pointer;
+        opacity: 0%;
+        animation-name: appear;
+        animation-duration: 500ms;
+        animation-fill-mode: forwards;
+        transition: all 0.2s;
+        & svg {
+            margin: auto;
+        }
+        &:hover {
+            background-color: white;
+            color: royalblue;
+            border: 1px solid royalblue;
+        }
+    }
+    
+    @keyframes mathProblemEntry {
+        100% {
+            transform: translateY(-1px);
+            opacity: 100%;
+        };
+    }
+    @keyframes mathProblemPressure {
+        from {
+            height: 42.5%;
+            width: 42.5%;
+        }
+        to {
+            height: 48%;
+            width: 48%;
+        }
+    }
+    @keyframes squareImageShrinkingMedium {
+        from {
+            height: 45vh;
+            width: 45vh;
+        }
+        to {
+            height: 30vh;
+            width: 30vh;
+        }
+    }
+    @keyframes squareImageShrinkingTiny {
+        from {
+            height: 30vh;
+            width: 30vh;
+        }
+        to {
+            height: 15vh;
+            width: 15vh;
+        }
+    }
+    @keyframes squareImageShaking {
+        0% {
+            transform: translateX(0);
+          }
+          25% {
+            transform: translateX(10px);
+          }
+          50% {
+            transform: translateX(-10px);
+          }
+          75% {
+            transform: translateX(10px);
+          }
+          100% {
+            transform: translateX(0);
+          }
+    }
+    @keyframes redBackground {
+        to {
+            // background-image: linear-gradient(rgb(15, 15, 15) 0%, #8b0000);
+            background-color: #8b0000;
+        }
+    }
+    @keyframes transparentBackground {
+        to {
+            background-color: transparent;
+        }
+    }
+    @keyframes shrinkField {
+        to {
+            height: 45vh;
+            width: 45vh;
+        }
+    }
+    @keyframes whitenBackground {
+        to {
+            background-color: white;
+        }
+    }
+    @keyframes toLightSquare {
+        to {
+            background-image: url("/assets/square-margin.webp");
+            border-radius: 30px;
+        }
+    }
+    @keyframes brightenField {
+        to {
+            background-color: #f5f5f7;
+        }
+    }
+    @keyframes translateLeft {
+        to {
+            transform: translateX(calc(-26.5vw + 20px))
+            // transform: translateX(calc(-42.5vw + 22.5vh))
+        }
+    }
+    @keyframes translateRight {
+        to {
+            transform: translateX(calc(26.5vw - 20px));
+        }
+    }
+    @keyframes expandField {
+        to {
+            height: 55vh;
+            width: 85vw;
+        }
+    }
+    @keyframes appear {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 100;
+        }
+    }

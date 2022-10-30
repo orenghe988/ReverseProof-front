@@ -132,17 +132,18 @@
 		flex-direction: column;
 		vertical-align: middle;
 		line-height: normal;
-		transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+		transition: color 0.5s;
 		&:hover {
-			color: lightgrey;
+			color: grey;
 		}
 	}
 	.header-logo {
 		height: 40px;
 		border-radius: 7px;
-		transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+		transition: color 0.5s;
+		transform: translateY(-1px);
 		&:hover {
-			color: lightgrey;
+			color: grey;
 		}
 	}
 	.icons-container {

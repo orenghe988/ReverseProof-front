@@ -5,10 +5,14 @@
             "en": "Lazy people only"
         }
     },
-    "showcaseText": {
-        "showcaseFirstText": {
-            "en": "hello there!",
-            "he": "שלום לכם!"
+    "showcase": {
+        "showcaseFieldText": {
+            "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "he": "לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק. קונדימנטום קורוס בליקרה, נונסטי קלובר בריקנה סטום, לפריקך תצטריק לרטי."
+        },
+        "showcaseReloadButton": {
+            "he": "מחדש",
+            "en": "replay"
         }
     },
     "animatedSquareText": {
@@ -16,13 +20,5 @@
             "he": "(תמשיכו לגלול, זה חלק מהאפקט)",
             "en": "(continue scrolling)"
         }
-    },
-    "sentence": {
-            "he": "לא עוד לתחושת חוסר הוודאות.",
-            "en": "No more uncertainty."
-    },
-    "bright": {
-            "he": "אנחנו ReverseProof. התחושה הזאת של המבוי הסתום כשניסינו לפתור משהו תמיד הייתה מאוד מטרידה. רצינו לעשות צעד כלשהו כדי לאפשר לנו, ולכל אחד ואחת להרחיב את נקודת המבט שלהם ואת סט הכלים שיש להם כדי להתמודד עם בעיות לוגיות. \n החלטנו שבעיות כמו אלה העוסקות בגיאומטריה יכולות להוות הזדמנות בשביל להתנסות יותר ויותר בהתמודדות עם בעיות מהסוג הזה, בגלל המורכבות שיכולה להיות להן, וגם כיוון שניתן לארגן את הפתרונות לכל בעיה כזאת, בתוך טבלה של טענה ונימוק. \n בחודשים אלו אנחנו עובדים נמרצות על תכנית, שתוכל לסייע לכל אחד ואחת בפתירת בעיות כאלו. זאת אומרת: פחות תחושה של מבוי סתום! אם נתקעתם בבעיה העוסקת בגיאומטריה, ואתם לא יודעים לאן לפנות או מה לעשות, תוכלו להיוועץ באלגוריתם שלנו ולהגיע לפתרון הבעיה.",
-            "en": "ReverseProof's algorithm aims to simplify and reduce geometry problems to a simple statement & proof table."
     }
 }
