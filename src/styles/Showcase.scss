@@ -100,7 +100,6 @@
             animation-name: appear;
             animation-duration: 300ms;
             animation-delay: 6650ms;
-            animation-fill-mode: forwards;
         }
         & p {
             font-size: min(2.5vw, 16pt);
@@ -121,10 +120,12 @@
         border-radius: 10px;
         cursor: pointer;
         opacity: 0%;
-        animation-name: appear;
-        animation-duration: 500ms;
-        animation-fill-mode: forwards;
         transition: all 0.2s;
+        &.animate {
+            animation-name: appear;
+            animation-duration: 300ms;
+            animation-delay: 7100ms;
+        }
         & svg {
             margin: auto;
         }

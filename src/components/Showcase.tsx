@@ -1,6 +1,7 @@
-/** @jsxImportSource solid-js */
-import { createSignal, createEffect, Show } from 'solid-js';
-import { createViewportObserver } from '@solid-primitives/intersection-observer';
+// import { useState, createEffect, Show } from 'solid-js';
+// import { createViewportObserver } from '@solid-primitives/intersection-observer';
+import { useState, useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { isDark } from '../stores/darkmode';
 import { showcase } from '../text.json';
 import '../styles/Showcase.scss';
@@ -13,55 +14,34 @@ type SquareChildSrcType =
 	| `/assets/proof-${'he' | 'en'}.jpg`;
 
 export default function Showcase({ lang }: ComponentProps) {
-	const isVisible = createSignal<boolean>(false);
-	const [add] = createViewportObserver([], { threshold: 1 });
-	const observer = (
-		el: Element,
-		signalFunction: () => [() => boolean, any]
-	) => {
-		const [_getter, setter] = signalFunction();
-		add(el, signalFunction => setter(signalFunction.isIntersecting));
-	};
+	const [viewRef, isVisible, entry] = useInView({ threshold: 1 });
 
-	////////////////////////////////////////////////////////////////////
-
-	const [containerClass, setContainerClass] =
-		createSignal('showcase-container');
-	const [fieldClass, setFieldClass] = createSignal('showcase-field');
-	const [squareClass, setSquareClass] = createSignal('square-image');
-	const [problemClass, setProblemClass] = createSignal('math-problem');
-	const [textContainerClass, setTextContainerClass] = createSignal(
+	const [containerClass, setContainerClass] = useState('showcase-container');
+	const [fieldClass, setFieldClass] = useState('showcase-field');
+	const [squareClass, setSquareClass] = useState('square-image');
+	const [problemClass, setProblemClass] = useState('math-problem');
+	const [replayButtonClass, setReplayButtonClass] = useState('replay-button');
+	const [textContainerClass, setTextContainerClass] = useState(
 		`text-container ${lang}`
 	);
 
-	const [getSquareChildSrc, setSquareChildSrc] =
-		createSignal<SquareChildSrcType>('/assets/problem.webp');
-	const [showReloadButton, setShowReloadButton] = createSignal(false);
-	let animatedTillBright = false;
+	const [getSquareChildSrc, setSquareChildSrc] = useState<SquareChildSrcType>(
+		'/assets/problem.webp'
+	);
+
 	const animate = () => {
 		setContainerClass('showcase-container animate');
 		setFieldClass('showcase-field animate');
 		setSquareClass(`square-image ${lang} animate`);
 		setProblemClass('math-problem animate');
 		setTextContainerClass(`text-container ${lang} animate`);
-		if (animatedTillBright) isDark.set(false);
-		else {
-			setTimeout(() => {
-				animatedTillBright = true;
-				isDark.set(false);
-				setSquareChildSrc(`/assets/proof-${lang}.jpg`);
-			}, 4900);
-			setTimeout(() => {
-				setShowReloadButton(true);
-			}, 6650);
-		}
+		setReplayButtonClass('replay-button animate');
+		const darkTimeout = setTimeout(() => {
+			isDark.set(false);
+			setSquareChildSrc(`/assets/proof-${lang}.jpg`);
+		}, 4900);
+		return () => clearTimeout(darkTimeout);
 	};
-
-	createEffect(() => {
-		if (isVisible[0]()) {
-			animate();
-		}
-	});
 
 	const resetAnimation = () => {
 		setContainerClass('showcase-container');
@@ -69,42 +49,42 @@ export default function Showcase({ lang }: ComponentProps) {
 		setSquareClass(`square-image ${lang}`);
 		setProblemClass('math-problem');
 		setTextContainerClass(`text-container ${lang}`);
-		isDark.set(true);
-		animatedTillBright = false;
-
 		setSquareChildSrc('/assets/problem.webp');
-		setShowReloadButton(false);
-		animate();
+		setReplayButtonClass('replay-button');
+		isDark.set(true);
 	};
 
+	useEffect(() => {
+		if (isVisible) {
+			return animate();
+		}
+	});
+
 	return (
-		<div class={containerClass()}>
-			{/* @ts-expect-error */}
-			<div class={fieldClass()} use:observer={isVisible}>
-				<div class={textContainerClass()}>
+		<div className={containerClass}>
+			<div className={fieldClass} ref={viewRef}>
+				<div className={textContainerClass}>
 					<p>{showcase.showcaseFieldText[lang]}</p>
 				</div>
-				<div class={squareClass()}>
+				<div className={squareClass}>
 					<img
-						src={getSquareChildSrc()}
-						class={problemClass()}
+						src={getSquareChildSrc}
+						className={problemClass}
 						alt="math problem"
 					/>
 				</div>
 			</div>
-			<Show when={showReloadButton()}>
-				<button class="replay-button" onClick={resetAnimation}>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-						height="25"
-						width="25">
-						<path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-					</svg>
-				</button>
-			</Show>
+			<button className={replayButtonClass} onClick={resetAnimation}>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					height="25"
+					width="25">
+					<path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+				</svg>
+			</button>
 		</div>
 	);
 }
